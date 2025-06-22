@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import io.github.ktpm.bluemoonmanagement.service.face.FaceRecognitionService;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -96,20 +97,19 @@ public class LoginController implements Initializable {
             return;
         }
 
-        // Xác thực khuôn mặt trước khi đăng nhập
-        FaceRecognitionService faceRecognitionService = new FaceRecognitionService();
-        boolean faceMatched = faceRecognitionService.recognizeFace(email);
-
-        if (!faceMatched) {
-            textError.setText("Không nhận diện được khuôn mặt hoặc khuôn mặt không khớp với tài khoản đã nhập.");
-            textError.setVisible(true);
-            return;
-        }
+//        // Xác thực khuôn mặt trước khi đăng nhập
+//        //FaceRecognitionService faceRecognitionService = new FaceRecognitionService();
+//       //boolean faceMatched = faceRecognitionService.recognizeFace(email);
+//
+//        //if (!faceMatched) {
+//            textError.setText("Không nhận diện được khuôn mặt hoặc khuôn mặt không khớp với tài khoản đã nhập.");
+//            textError.setVisible(true);
+//            return;
+//        }
 
         // Nếu qua xác thực khuôn mặt -> tiếp tục đăng nhập
         DangNhapDto dangNhapDto = new DangNhapDto(email, password);
         ResponseDto response = dangNhapServive.dangNhap(dangNhapDto);
-
         if (response.isSuccess()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Đăng nhập thành công");
@@ -117,11 +117,18 @@ public class LoginController implements Initializable {
             alert.setContentText("Chào mừng " + email + "!");
             alert.showAndWait();
             try {
+
                 Parent mainView = fxViewLoader.loadView("/view/khung.fxml");
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(mainView));
                 stage.setTitle("Application");
                 stage.show();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/chat_view.fxml"));
+                Parent chatView = loader.load();
+                Stage chatStage = new Stage();
+                chatStage.setTitle("ChatBot");
+                chatStage.setScene(new Scene(chatView));
+                chatStage.show();
             } catch (IOException e) {
                 e.printStackTrace();
                 // Xử lý lỗi nếu không thể tải file FXML
