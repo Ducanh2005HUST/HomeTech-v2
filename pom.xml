@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.github.ktpm</groupId>
-    <artifactId>BlueMoonManagement</artifactId>
+    <artifactId>HomeTechManagement</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>BlueMoonManagement</name>
-    <description>BlueMoonManagement</description>
+    <name>HomeTechManagement</name>
+    <description>HomeTechManagement</description>
     <url/>
     <licenses>
         <license/>
@@ -150,7 +150,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>io.github.ktpm.bluemoonmanagement.BlueMoonManagementApplication</mainClass>
+                    <mainClass>io.github.ktpm.bluemoonmanagement.HomeTechManagementApplication</mainClass>
                     <arguments>
                         <argument>--module-path</argument>
                         <argument>C:/javafx-sdk-21.0.2/lib</argument>
@@ -164,7 +164,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>io.github.ktpm.bluemoonmanagement.BlueMoonManagementApplication</mainClass>
+                    <mainClass>io.github.ktpm.bluemoonmanagement.HomeTechManagementApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

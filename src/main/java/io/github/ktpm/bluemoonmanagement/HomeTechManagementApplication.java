@@ -10,7 +10,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-public class BlueMoonManagementApplication extends Application {
+public class HomeTechManagementApplication extends Application {
 
     private ConfigurableApplicationContext context;
 
@@ -27,7 +27,7 @@ public class BlueMoonManagementApplication extends Application {
         Parent root = viewLoader.loadView("/view/dang_nhap.fxml"); // 👈 Load FXML qua FxViewLoader
 
         primaryStage.setScene(new Scene(root));
-        primaryStage.setTitle("Blue Moon Management");
+        primaryStage.setTitle("Home Tech Management");
         primaryStage.show();
     }
 
